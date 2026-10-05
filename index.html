@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Turn short cooking videos into beautiful recipe cards." />
+    <title>Simmer — recipes from the videos you love</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand"><span class="brand-mark">✦</span><span>Simmer</span></div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="home"><span>⌂</span> Home</button>
+          <button class="nav-item" data-view="cookbooks"><span>▤</span> My cookbooks</button>
+        </nav>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Your collections <button id="addCookbookSide" class="icon-button" aria-label="Create cookbook">＋</button></div>
+          <div id="sidebarCookbooks" class="sidebar-cookbooks"></div>
+        </div>
+        <div class="sidebar-footer"><div class="avatar">VC</div><div><strong>Valentina</strong><small>Home kitchen</small></div><span class="more">•••</span></div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar"><button class="mobile-menu" aria-label="Open navigation">☰</button><div class="breadcrumb">Home <span>/</span> <strong id="breadcrumbCurrent">Import recipe</strong></div><div class="top-actions"><button class="ghost-button" id="helpButton">?</button><button class="avatar mini">VC</button></div></header>
+
+        <section id="homeView" class="view active-view">
+          <div class="page-intro"><div><p class="eyebrow">YOUR PERSONAL RECIPE LIBRARY</p><h1>Make something<br /><em>delicious.</em></h1><p class="intro-copy">Save the recipes you find in your feed, without the scrolling and screenshots.</p></div><div class="floating-spoon" aria-hidden="true">⌁</div></div>
+
+          <section class="import-card" aria-labelledby="importHeading">
+            <div class="section-heading"><div><h2 id="importHeading">Import a recipe</h2><p>Paste a TikTok or Instagram link, or upload a video from your camera roll.</p></div><span class="status-badge"><i></i> Ready to cook</span></div>
+            <div class="import-controls"><label class="url-field"><span class="field-icon">↗</span><input id="videoUrl" type="url" placeholder="Paste a TikTok or Instagram link" value="https://www.instagram.com/reel/creamy-tuscan-pasta/" /></label><span class="or">or</span><label class="upload-field"><input id="videoFile" type="file" accept="video/mp4,video/quicktime,video/*" /><span>↑ <strong>Upload video</strong><small>MP4 or MOV · max 100 MB</small></span></label><button id="extractButton" class="primary-button">Extract recipe <span>→</span></button></div>
+            <div class="supported"><span>Works with</span><b>♪ TikTok</b><b>◎ Instagram</b><span class="privacy">Your videos stay private and secure.</span></div>
+          </section>
+
+          <div class="content-grid"><section class="recipe-preview"><div class="section-heading compact"><div><p class="eyebrow">LATEST EXTRACTION</p><h2>Your recipe sheet</h2></div><button id="printButton" class="text-button">↗ Print / PDF</button></div><article class="recipe-sheet" id="recipeSheet"><div class="recipe-image"><div class="image-overlay"><span class="source-pill">◎ Instagram Reel</span><span class="play-button">▶</span></div></div><div class="recipe-body"><div class="recipe-topline"><span class="category-label">PASTA · WEEKDAY</span><button class="favorite" aria-label="Favorite recipe">♡</button></div><h3 id="recipeTitle" contenteditable="true">Creamy Tuscan Pasta</h3><p id="recipeDescription" class="recipe-description" contenteditable="true">A silky, sun-dried tomato pasta with spinach and garlic. Comforting, quick, and deeply satisfying.</p><div class="recipe-meta"><span><b>Prep</b> 10 min</span><span><b>Cook</b> 20 min</span><span><b>Serves</b> 4</span></div><div class="recipe-columns"><div><h4>Ingredients <small>6 items</small></h4><ul id="ingredientsList" class="ingredients"><li><span>250</span> g rigatoni</li><li><span>2</span> tbsp olive oil</li><li><span>3</span> cloves garlic, minced</li><li><span>120</span> g sun-dried tomatoes</li><li><span>200</span> ml heavy cream</li><li><span>60</span> g baby spinach</li></ul></div><div><h4>Method <small>4 steps</small></h4><ol class="steps"><li>Cook pasta until al dente. Reserve ½ cup pasta water.</li><li>Sauté garlic and tomatoes in olive oil until fragrant.</li><li>Stir in cream and spinach. Simmer until just wilted.</li><li>Toss with pasta, loosening with pasta water. Season and serve.</li></ol></div></div><div class="tip"><span>✦</span><p><b>Chef's tip</b><br />Add a splash of pasta water at the end for a glossy, silky sauce.</p></div><div class="save-row"><label for="cookbookSelect">Add to cookbook</label><select id="cookbookSelect"></select><button id="saveButton" class="primary-button">Save recipe <span>✓</span></button></div></div></article></section><aside class="right-rail"><div class="rail-card accent-card"><span class="rail-icon">♨</span><h3>Small steps,<br />good meals.</h3><p>Simmer keeps your favorite food ideas close, so you can spend less time searching and more time cooking.</p></div><div class="rail-card"><div class="rail-heading"><h3>Your cookbooks</h3><button class="text-button" data-view="cookbooks">See all</button></div><div id="cookbookCards"></div></div></aside></div>
+        </section>
+
+        <section id="cookbooksView" class="view"><div class="page-intro cookbook-intro"><div><p class="eyebrow">YOUR COLLECTIONS</p><h1>Cookbooks<br /><em>for every mood.</em></h1><p class="intro-copy">A home for every recipe worth making again.</p></div><button id="addCookbookButton" class="primary-button">＋ New cookbook</button></div><div id="cookbookGrid" class="cookbook-grid"></div></section>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
